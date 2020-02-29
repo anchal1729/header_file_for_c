@@ -8,7 +8,7 @@
 
 *****************************************************************/
 
-
+#include<string.h>
 
 // Function to swap two numbers 
 void swap(int *x, int *y)
@@ -297,4 +297,108 @@ void countingSort1(int array[], int size)
   }
 }
 
+void fact_orial(int n)
+{
+    if(n <= 0)
+    {
+        printf("\n Does not have factorial");
+    }
+    else
+    {
+        int f=1;
+        while(n)
+        {
+            f+=f*n;
+            n--;
+        }
+        printf("\n Factorial of the number:%d",f);
+    }
+}
 
+long factorial(int number)
+{
+    if (number >= 1)
+        return (number * factorial(number - 1));
+    else
+        return 1;
+}
+
+#define MAX 2
+int m =2;
+int n =2;
+int p =2;
+void MatrixMutiply(int m,int n,int p,int matrix1[MAX][MAX],
+int matrix2[MAX][MAX],int matrixResult[MAX][MAX])
+{
+int  sum;
+for(int i=0;i<m;i++)
+  for(int j=0;j<p;j++)
+  {
+   sum=0;
+   for(int k=0;k<n;k++)
+    sum+=matrix1[i][k]*matrix2[k][j];
+   matrixResult[i][j]=sum;
+  }
+}
+
+int fibonacci(int n) 
+{ 
+if (n==1||n==0) //in any case return same number bcoz of fibonacci numbers->0 1 1 .....-<
+  return n; 
+return fibonacci(n-1) + fibonacci(n-2); 
+} 
+
+void generateSquare(int n) 
+{ 
+    int magicSquare[n][n]; 
+  
+    // set all slots as 0 
+    memset(magicSquare, 0, sizeof(magicSquare)); 
+  
+    // Initialize position for 1 
+    int i = n/2; 
+    int j = n-1; 
+  
+    // One by one put all values in magic square 
+    for (int num=1; num <= n*n; ) 
+    { 
+        if (i==-1 && j==n) //3rd condition 
+        { 
+            j = n-2; 
+            i = 0; 
+        } 
+        else
+        { 
+            // 1st condition helper if next number  
+            // goes to out of square's right side 
+            if (j == n) 
+                j = 0;
+   
+            // 1st condition helper if next number  
+            // is goes to out of square's upper side 
+            if (i < 0) 
+                i=n-1; 
+        } 
+        if (magicSquare[i][j]) //2nd condition 
+        { 
+            j -= 2; 
+            i++; 
+            continue; 
+        } 
+        else
+            magicSquare[i][j] = num++; //set number 
+  
+        j++; i--; //1st condition 
+    } 
+  
+    // Print magic square 
+    printf("The Magic Square for n=%d:\nSum of "
+       "each row or column %d:\n\n",  n, n*(n*n+1)/2); 
+    for (i=0; i<n; i++) 
+    { 
+        for (j=0; j<n; j++) 
+            printf("%3d ", magicSquare[i][j]); 
+        printf("\n"); 
+    } 
+} 
+  
